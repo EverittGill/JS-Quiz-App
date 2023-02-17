@@ -46,15 +46,18 @@ function showQuestions() {
 
 // creates the timer
 function countdown() {
-    debugger
-        timer = setInterval(() => {
+    // debugger
+        var timer = setInterval(() => {
         countdownDisplay.innerHTML = "Your score " + countdownTime;
         countdownTime--;
+        console.log(countdownTime);
+        if (countdownTime <= 0) {
+            document.getElementById("countdownDisplay").innerHTML = 0;
+            clearInterval(timer)
+            // alert("time's up")
+        }
+        // console.log(seconds)
     }, 1000)
-    if (countdownDisplay <= 0) {
-        alert("time's up")
-    }
-    console.log(seconds)
 }
 
 function checkAnswers(event) {
