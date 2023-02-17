@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Quiz App</title>
+</head>
+<body>
+    <section class="display-absolute">
+        <div id="view-high-scores"><p>View High Scores</p></div>
+        <div id="countdownDisplay"><p>00:00</p></div>
+    </section>    
+    
+    <section class="wrapper">
+      <div id="start-screen">
+        <h1>Coding Quiz</h1>
+        <p>Think fast and and click carefully for the clock will determine your score. Get a question right and move along. But get one wrong and your score will be reduced. Log your name and score at the end</p>
+        <button class="start-button">Start</button>
+     </div>  
+    
+    
+     <section class="hidden" id="question1">
+        <h2 id="question-title">What is used to indicate an array</h2>
+        <div class="answers">
+            <button onclick="checkAnswers(event)" id="answer0">{}</button>
+            <button onclick="checkAnswers(event)" id="answer1">[]</button>
+            <button onclick="checkAnswers(event)" id="answer2">&&</button>
+            <button onclick="checkAnswers(event)" id="answer3">()</button>
+        </div>
+     </section>
+
+     <section class="hidden" id="question2">
+        <h2 id="question-title">Within HTML where do we put our JavaScript?</h2>
+        <div class="answers">
+            <button onclick="checkAnswers(event)" id="answer0">script tags</button>
+            <button onclick="checkAnswers(event)" id="answer1">logic tags</button>
+            <button onclick="checkAnswers(event)" id="answer2">JavaScript tags</button>
+            <button onclick="checkAnswers(event)" id="answer3">style tags</button>
+        </div>
+     </section>
+
+     <section class="hidden" id="question3">
+        <h2 id="question-title">What does DOM stand for</h2>
+        <div class="answers">
+            <button onclick="checkAnswers(event)" id="answer0">Data Occurrence Mode</button>
+            <button onclick="checkAnswers(event)" id="answer1">Document Outstanding Method</button>
+            <button onclick="checkAnswers(event)" id="answer2">Document Object Model</button>
+            <button id="answer3">Distributed Object Model</button>
+        </div>
+     </section>
+
+     <section class="hidden" id="question4">
+        <h2 id="question-title">who invented JavaScript? </h2>
+        <div class="answers">
+            <button onclick="checkAnswers(event)" id="answer0">John Carmack</button>
+            <button onclick="checkAnswers(event)" id="answer1">Lex Fridman</button>
+            <button onclick="checkAnswers(event)" id="answer2">Brendan Eich</button>
+            <button onclick="checkAnswers(event)" id="answer3">Guido van Rossum</button>
+        </div>
+     </section>
+
+     
+     <section class="hidden" id="log-score">
+        <h2>GAME OVER</h2>
+        <p>How fast did you think and how carefully did you click?
+            Log your score and break it quick. <span id="your-score"></span>.</p>
+        <p>Enter your initials: <input type="text" id="initials" max="4"/>
+            <button id="Submit">Submit</button></p>
+     </section>
+
+
+
+
+
+
+
+    </section>
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+
+<!-- User Story
+AS A coding boot camp student
+I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+SO THAT I can gauge my progress compared to my peers
+
+Acceptance Criteria
+
+GIVEN I am taking a code quiz
+WHEN I click the start button
+THEN a timer starts and I am presented with a question
+WHEN I answer a question
+THEN I am presented with another question
+WHEN I answer a question incorrectly
+THEN time is subtracted from the clock
+WHEN all questions are answered or the timer reaches 0
+THEN the game is over
+WHEN the game is over
+THEN I can save my initials and score -->

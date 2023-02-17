@@ -1,0 +1,73 @@
+:root {
+    --background-color: #e9c7aa;
+    --button-color: #329ea1;
+}
+
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+h1, h2 {
+    text-align: center;
+}
+
+p {
+    font-size: x-large;
+}
+.display-absolute {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+
+.wrapper {
+    background-color: var(--background-color);
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+#start-screen {
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+
+#questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+button {
+    background-color: var(--button-color);
+    width: 400px;
+    height: 50px;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+    margin: 30px;
+    border-radius: 20px;
+    border-color: --;
+}
+
+.hidden {
+    display: none;
+    
+}
+
+/* #log-score {
+    display: none;
+    padding: 30px;
+} */
