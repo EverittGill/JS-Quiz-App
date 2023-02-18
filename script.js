@@ -1,35 +1,17 @@
 // global variables
 var question1 = document.getElementById("question1");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // global variables
 var startButton = document.querySelector(".start-button");
 var startScreen = document.getElementById("start-screen");
 var questions = document.getElementById("questions")
-// var timer;
-var countdownTime = 3;
+var countdownTime = 200;
 var countdownDisplay = document.getElementById("countdownDisplay");
 // var answer0 = document.getElementById("answer0");
 // var answer1 = document.getElementById("answer1");
 // var answer2 = document.getElementById("answer2");
 // var answer3 = document.getElementById("answer3");
-var counter = 1
-// var countdown;
-
+var counter = 0
 
 
 
@@ -46,7 +28,6 @@ function showQuestions() {
 
 // creates the timer
 function countdown() {
-    // debugger
         var timer = setInterval(() => {
         countdownDisplay.innerHTML = "Your score " + countdownTime;
         countdownTime--;
@@ -54,19 +35,38 @@ function countdown() {
         if (countdownTime <= 0) {
             document.getElementById("countdownDisplay").innerHTML = 0;
             clearInterval(timer)
-            // alert("time's up")
         }
-        // console.log(seconds)
     }, 1000)
 }
 
+
 function checkAnswers(event) {
-    console.log(event.target)
+    var click = event.target.textContent
+    console.log(counter)
     document.querySelector("#question" + counter).classList.add("hidden")
     counter++;
     document.querySelector("#question" + counter).classList.remove("hidden")
+    console.log(click);
+    console.log(correctAnswer)
+    if (click.correctAnswer[counter] === correctAnswer[0]) {
+        countdownTime += 1000;
+    }
+
 }
 
+var answer = document.getElementsByClassName("answer")
+
+var correctAnswer = ["[]","script tags","Document Object Model","Brendan Eich"];
+
+// if the event clicked matches anything in the correctAnswers array then 
+
+// var correctAnswerCount = correctAnswer[0]
+// for (let i = 0; i < correctAnswer.length; i++) {
+//     // console.log(checkAnswers.event.target)
+//     correctAnswerCount = correctAnswer[counter];
+//     console.log(correctAnswer);
+// }
+// return correctAnswer
 
 
 
@@ -133,32 +133,7 @@ function checkAnswers(event) {
 //       }
 // };
 
-
-
-
-
-
-
 // for (var i = 0; i < questionCards.length; i++)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // test for string match to get the correct answer
 
