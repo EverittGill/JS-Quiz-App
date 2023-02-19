@@ -15,6 +15,7 @@ var counter = 0
 var numQuestions = 4;
 var timer;
 var userInitials = document.getElementById("initials")
+var timesPlayed;
 
 
 startButton.addEventListener("click", showQuestions); 
@@ -64,6 +65,9 @@ function checkAnswers(event) {
        console.log("testing")
         countdownTime -= 10;
     }
+    if (counter === numQuestions - 1) {
+        gameOver()
+    }
  counter++;
 //  showQuestions()
 }
@@ -75,15 +79,45 @@ var correctAnswer = ["[]","script tags","Document Object Model","Brendan Eich"];
 
 function gameOver() {
     clearInterval(timer)
+    timesPlayed++;
+}
+
+function playAgain() {
+    counter = 0
+    countdownTime = 200
+    document.getElementById("question4").classList.add("hidden")
+    showQuestions()
 }
 
 function submit() {
     let initials = document.getElementById("initials").value
     console.log(initials)
     let yourScore = document.getElementById("yourScore")
-    yourScore.innerText = "Your Score = " + initials + " " + timer;
-    
+    yourScore.innerText = initials + " " + (countdownDisplay.innerText);
+    timesPlayed++;
 }
+
+
+// adding data for local storage
+// localStorage.setItem("submittedInitials", "initials")
+
+
+
+
+
+
+// let scores = [
+//     {
+//     initials: "",
+//     countdownTime: 
+//     }
+// ]
+
+
+
+// need a function to create a p element and display the initials and score as the innerText
+// need to get the stored values put into a json array and be stringified 
+// need a variable to keep track of how many times they've played the game. perhaps tie it to the submit button
 
 // local storage can only store strings
 
