@@ -12,8 +12,9 @@ var countdownDisplay = document.getElementById("countdownDisplay");
 // var answer2 = document.getElementById("answer2");
 // var answer3 = document.getElementById("answer3");
 var counter = 0
-
-
+var numQuestions = 4;
+var timer;
+var userInitials = document.getElementById("initials")
 
 
 startButton.addEventListener("click", showQuestions); 
@@ -28,35 +29,65 @@ function showQuestions() {
 
 // creates the timer
 function countdown() {
-        var timer = setInterval(() => {
+        timer = setInterval(() => {
         countdownDisplay.innerHTML = "Your score " + countdownTime;
         countdownTime--;
         console.log(countdownTime);
         if (countdownTime <= 0) {
             document.getElementById("countdownDisplay").innerHTML = 0;
-            clearInterval(timer)
+            gameOver()
         }
     }, 1000)
 }
 
 
+
+// function checkAnswers() {
+//     correctAnswer.forEach(function(answer, index) {
+        
+//     })
+// }
+
 function checkAnswers(event) {
-    var click = event.target.textContent
+    var click = event.target.innerText
     console.log(counter)
     document.querySelector("#question" + counter).classList.add("hidden")
-    counter++;
-    document.querySelector("#question" + counter).classList.remove("hidden")
-    console.log(click);
-    console.log(correctAnswer)
-    if (click.correctAnswer[counter] === correctAnswer[0]) {
-        countdownTime += 1000;
+    if (counter !== numQuestions) {
+        document.querySelector("#question" + (counter + 1)).classList.remove("hidden")
     }
-
+    if (counter === numQuestions - 1) {
+        gameOver()
+    }
+    console.log(click)
+    // console.log(correctAnswer[counter],click)
+    if (click !== correctAnswer[counter]) {
+       console.log("testing")
+        countdownTime -= 10;
+    }
+ counter++;
+//  showQuestions()
 }
 
 var answer = document.getElementsByClassName("answer")
 
 var correctAnswer = ["[]","script tags","Document Object Model","Brendan Eich"];
+
+
+function gameOver() {
+    clearInterval(timer)
+}
+
+function submit() {
+    let initials = document.getElementById("initials").value
+    console.log(initials)
+    let yourScore = document.getElementById("yourScore")
+    yourScore.innerText = "Your Score = " + initials + " " + timer;
+    
+}
+
+// local storage can only store strings
+
+
 
 // if the event clicked matches anything in the correctAnswers array then 
 
