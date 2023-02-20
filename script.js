@@ -16,6 +16,12 @@ var numQuestions = 4;
 var timer;
 var userInitials = document.getElementById("initials")
 var timesPlayed;
+var initials;
+var mostRecentScore = localStorage.getItem("mostRecentScore")
+var finalScore = document.getElementById("yourScore")
+finalScore.innerText = [
+    {}
+]
 
 
 startButton.addEventListener("click", showQuestions); 
@@ -98,8 +104,25 @@ function submit() {
 }
 
 
+function saveHighScore() {
+    console.log("clicked the submit button")
+    localStorage.setItem("mostRecentScore", countdownDisplay)
+    console.log(finalScore)
+    console.log(highScores)
+    console.log(mostRecentScore)
+    console.log(finalScore.innerText + "finalScore.innerText")
+}
+
+var highScores = [
+    {
+        mostRecentScore: "logging highScores array item 1",
+        finalScore: "logging highScores array item 2"
+    }
+]
+
+// push initials and scores into an array, then change that array into a json array and put it into local storage
 // adding data for local storage
-// localStorage.setItem("submittedInitials", "initials")
+
 
 
 
