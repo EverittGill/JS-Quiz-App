@@ -15,13 +15,14 @@ var counter = 0
 var numQuestions = 4;
 var timer;
 var userInitials = document.getElementById("initials")
-var timesPlayed;
+var timesPlayed = 0;
 var initials;
 var mostRecentScore = localStorage.getItem("mostRecentScore")
 var finalScore = document.getElementById("yourScore")
-finalScore.innerText = [
-    {}
-]
+var highScores = {
+        initials: "",
+        score: 0,
+        }
 
 
 startButton.addEventListener("click", showQuestions); 
@@ -39,10 +40,10 @@ function countdown() {
         timer = setInterval(() => {
         countdownDisplay.innerHTML = "Your score " + countdownTime;
         countdownTime--;
-        console.log(countdownTime);
         if (countdownTime <= 0) {
             document.getElementById("countdownDisplay").innerHTML = 0;
             gameOver()
+            console.log("countdown")
         }
     }, 1000)
 }
@@ -57,28 +58,28 @@ function countdown() {
 
 function checkAnswers(event) {
     var click = event.target.innerText
-    console.log(counter)
+    // console.log(counter)
     document.querySelector("#question" + counter).classList.add("hidden")
     if (counter !== numQuestions) {
         document.querySelector("#question" + (counter + 1)).classList.remove("hidden")
     }
     if (counter === numQuestions - 1) {
         gameOver()
+        console.log("checkAnswers")
     }
     console.log(click)
     // console.log(correctAnswer[counter],click)
     if (click !== correctAnswer[counter]) {
        console.log("testing")
         countdownTime -= 10;
+        countdownDisplay.innerHTML = "Your score " + countdownTime;
     }
-    if (counter === numQuestions - 1) {
-        gameOver()
-    }
+
  counter++;
 //  showQuestions()
 }
 
-var answer = document.getElementsByClassName("answer")
+// var answer = document.getElementsByClassName("answer")
 
 var correctAnswer = ["[]","script tags","Document Object Model","Brendan Eich"];
 
@@ -86,6 +87,7 @@ var correctAnswer = ["[]","script tags","Document Object Model","Brendan Eich"];
 function gameOver() {
     clearInterval(timer)
     timesPlayed++;
+    console.log(timesPlayed)
 }
 
 function playAgain() {
@@ -100,25 +102,57 @@ function submit() {
     console.log(initials)
     let yourScore = document.getElementById("yourScore")
     yourScore.innerText = initials + " " + (countdownDisplay.innerText);
-    timesPlayed++;
-}
-
-
-function saveHighScore() {
-    console.log("clicked the submit button")
-    localStorage.setItem("mostRecentScore", countdownDisplay)
-    console.log(finalScore)
-    console.log(highScores)
-    console.log(mostRecentScore)
-    console.log(finalScore.innerText + "finalScore.innerText")
-}
-
-var highScores = [
-    {
-        mostRecentScore: "logging highScores array item 1",
-        finalScore: "logging highScores array item 2"
+    highScores.initials = initials;
+    highScores.score = countdownTime;
+    if(Array.isArray(JSON.parse(localStorage.getItem('scores')))){
+        let array = JSON.parse(localStorage.getItem("scores"))
+        array.push(highScores)
+        localStorage.setItem("scores", JSON.stringify(array) )
+    } else {
+        localStorage.setItem("scores", JSON.stringify([highScores]))
     }
-]
+    console.log(JSON.parse(localStorage.getItem("scores")))
+    displayScores()
+}
+
+
+
+function displayScores() {
+    let displayedScores = JSON.parse(localStorage.getItem("scores"))
+    let lists = document.getElementById("displayedScores")
+    let innerHTML = ``;
+    for (let i = 0; i < displayedScores.length; i++) {
+        innerHTML += `<li>${displayedScores[i].initials} Scored ${displayedScores[i].score}</li>`
+    }
+    lists.innerHTML = innerHTML
+}
+displayScores()
+
+function scoreButton() {
+    let scores = JSON.parse(localStorage.getItem("scores"))
+    let innerHTML = ""
+    let modal = document.getElementById("modal")
+    for (let i = 0; i < scores.length; i++) {
+        innerHTML += `<li>${scores[i].initials} Scored ${scores[i].score}</li>`
+    }
+    modal.innerHTML = innerHTML
+    console.log("score")
+}
+// function saveHighScore() {
+//     console.log("clicked the submit button")
+//     localStorage.setItem("mostRecentScore", countdownDisplay)
+    // console.log(finalScore)
+    // console.log(highScores)
+    // console.log(mostRecentScore)
+    // console.log(finalScore.innerText + "finalScore.innerText")
+// }
+
+// var highScores = [
+//     {
+//         initials: "",
+//         score:
+//     }
+// ]
 
 // push initials and scores into an array, then change that array into a json array and put it into local storage
 // adding data for local storage

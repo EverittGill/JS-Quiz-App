@@ -9,7 +9,7 @@
 </head>
 <body>
     <section class="display-absolute">
-        <div id="view-high-scores"><p>View High Scores</p></div>
+        <div onclick="scoreButton()" id="view-high-scores"><p>View High Scores</p></div>
         <div id="countdownDisplay"><p id="time">00:00</p></div>
     </section>    
     
@@ -71,10 +71,15 @@
             <button id="PlayAgain" onclick="playAgain(), saveHighScore()">Play Again</button>
             <p id="yourScore">Your Score </p>
             <p>High Scores</p>
-                <ul></ul>
+                <ul id="displayedScores"></ul>
      </section>
 
-
+    <section>
+        <div class="hidden" id="modal">
+            <span onclick="scoreButton()">x</span>
+            <p></p>
+        </div>
+    </section>
 
 
 
