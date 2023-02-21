@@ -104,10 +104,15 @@ function submit() {
     yourScore.innerText = initials + " " + (countdownDisplay.innerText);
     highScores.initials = initials;
     highScores.score = countdownTime;
-    if(Array.isArray(JSON.parse(localStorage.getItem('scores')))){
+    // if(Array.isArray(JSON.parse(localStorage.getItem('scores')))){
+        // let array = JSON.parse(localStorage.getItem("scores"))
+        // array.push(highScores)
+        // localStorage.setItem("scores", JSON.stringify(array) )
+    if (localStorage.getItem("scores") !== null) {
         let array = JSON.parse(localStorage.getItem("scores"))
         array.push(highScores)
         localStorage.setItem("scores", JSON.stringify(array) )
+        console.log("test for line 115 variable Array", array)
     } else {
         localStorage.setItem("scores", JSON.stringify([highScores]))
     }
