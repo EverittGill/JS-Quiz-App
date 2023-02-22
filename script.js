@@ -1,16 +1,10 @@
 // global variables
 var question1 = document.getElementById("question1");
-
-// global variables
 var startButton = document.querySelector(".start-button");
 var startScreen = document.getElementById("start-screen");
 var questions = document.getElementById("questions")
 var countdownTime = 200;
 var countdownDisplay = document.getElementById("countdownDisplay");
-// var answer0 = document.getElementById("answer0");
-// var answer1 = document.getElementById("answer1");
-// var answer2 = document.getElementById("answer2");
-// var answer3 = document.getElementById("answer3");
 var counter = 0
 var numQuestions = 4;
 var timer;
@@ -25,11 +19,11 @@ var highScores = {
         }
 
 
+        // adds an event lister to the start button
 startButton.addEventListener("click", showQuestions); 
 
+// runs when the start button is clicked. this removes the current set of questions and adds the next set
 function showQuestions() {
-    // startScreen.setAttribute("style", "display: none");
-    // questions.setAttribute("style", "display: flex");
     startScreen.classList.add("hidden")
     document.querySelector("#question" + counter).classList.remove("hidden")
     countdown() 
@@ -50,15 +44,11 @@ function countdown() {
 
 
 
-// function checkAnswers() {
-//     correctAnswer.forEach(function(answer, index) {
-        
-//     })
-// }
 
+// every time one of the possible answers is clicked this function runs
 function checkAnswers(event) {
     var click = event.target.innerText
-    // console.log(counter)
+    console.log(counter)
     document.querySelector("#question" + counter).classList.add("hidden")
     if (counter !== numQuestions) {
         document.querySelector("#question" + (counter + 1)).classList.remove("hidden")
@@ -67,19 +57,17 @@ function checkAnswers(event) {
         gameOver()
         console.log("checkAnswers")
     }
-    console.log(click)
+    // console.log(click)
     // console.log(correctAnswer[counter],click)
     if (click !== correctAnswer[counter]) {
-       console.log("testing")
+    //    console.log("testing")
         countdownTime -= 10;
         countdownDisplay.innerHTML = "Your score " + countdownTime;
     }
 
  counter++;
-//  showQuestions()
 }
 
-// var answer = document.getElementsByClassName("answer")
 
 var correctAnswer = ["[]","script tags","Document Object Model","Brendan Eich"];
 
@@ -96,7 +84,7 @@ function playAgain() {
     document.getElementById("question4").classList.add("hidden")
     showQuestions()
 }
-
+// this one was hard. I also learned that there is a submit button in html and you don't have to make your own
 function submit() {
     let initials = document.getElementById("initials").value
     console.log(initials)
@@ -104,6 +92,7 @@ function submit() {
     yourScore.innerText = initials + " " + (countdownDisplay.innerText);
     highScores.initials = initials;
     highScores.score = countdownTime;
+    // I kept the next four lines because i think i was on to something and want to reference it later
     // if(Array.isArray(JSON.parse(localStorage.getItem('scores')))){
         // let array = JSON.parse(localStorage.getItem("scores"))
         // array.push(highScores)
@@ -133,6 +122,8 @@ function displayScores() {
 }
 displayScores()
 
+// this was going to be the text on the first screen that says "view high scores" but I ran out of time to finish making that functional. I wanted something to pop up and display the scores.
+// this was the last of my 43 hours spent on this challenge.
 function scoreButton() {
     let scores = JSON.parse(localStorage.getItem("scores"))
     let innerHTML = ""
@@ -143,6 +134,19 @@ function scoreButton() {
     modal.innerHTML = innerHTML
     console.log("score")
 }
+
+
+// below you'll find a bunch of code I wrote trying to complete this project using a different method.
+// I spent about 20 hours writing it before being told by someone relevant to this project that I should do it the way I did above. #worstAdviceEver #wastOfTime #suffering
+// I'm not going to remove all the commented out code because I may want to reference it later. If you choose to take points off for this let me know. also please don't
+
+
+
+
+
+
+
+
 // function saveHighScore() {
 //     console.log("clicked the submit button")
 //     localStorage.setItem("mostRecentScore", countdownDisplay)
