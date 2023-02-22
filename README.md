@@ -6,7 +6,8 @@ This was developed to provide a short quiz with several questions about JavaScri
 
 - I was motivated to make this from a desire to expand my understanding of DOM manipulation and JavaScript.
 - I built this project to fulfill my desire of expanding my understanding of DOM manipulation and JavaScript
-- From developing this app I learned that I don't want to do this with my life and that I'm awful at writing code. I learned that taking Xanax again after spending two years coming off of it is better than having another panic attack. I learned that writing code makes me extremely anxious and can cause me to have a panic attack I learned basically nothing about writing code from the 41 hours in counting and three hours of tutoring I put into this project.
+- From developing this app I learned that I don't want to do this with my life and that I'm awful at writing code. I learned that taking Xanax again after spending two years coming off of it is better than having another panic attack from doing this. I learned that writing code makes me extremely anxious and can cause me to have a panic attack.
+- I learned about a hand full of JS functions
 
 
 ## Installation
@@ -19,9 +20,8 @@ Just follow this link and follow the instructions
 
 Follow the link and click start. click on the correct answers to not make your score drop faster. log your score at the end
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+    ![start page image](assets/Start-Page-Quiz-App.png)
+
 
 ## Credits
 
