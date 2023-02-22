@@ -20,7 +20,7 @@ Just follow this link and follow the instructions
 
 Follow the link and click start. click on the correct answers to not make your score drop faster. log your score at the end
 
-    ![start page image](assets/Start-Page-Quiz-App.png)
+![start page image](https://raw.githubusercontent.com/EverittGill/JS-Quiz-App/main/assets/Start-Page-Quiz-App.png)
 
 
 ## Credits
